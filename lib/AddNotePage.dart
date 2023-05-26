@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject/Notes.dart';
+import 'package:provider/provider.dart';
+
+import 'db_provider.dart';
 
 class AddNotePage extends StatefulWidget {
   const AddNotePage({Key? key}) : super(key: key);
@@ -8,6 +12,8 @@ class AddNotePage extends StatefulWidget {
 }
 
 class _AddNotePageState extends State<AddNotePage> {
+  String title = "";
+  String det = "";
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -36,7 +42,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     color: Colors.blue[800],
                   ),
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 30.0),
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter Your Note Address',
@@ -58,8 +64,11 @@ class _AddNotePageState extends State<AddNotePage> {
                     primary: Colors.blue[800], // set the background color to blue
                     minimumSize: Size(415, 50), // set the minimum width and height
                   ),
-                  onPressed: () {
-                    // do something when button is pressed
+                  onPressed: () async {
+                    NotesModel noteModel = NotesModel(name: title, details: det);
+                    await Provider.of<DbProvider>(context, listen: false)
+                    .createNewNote(noteModel);
+                    Navigator.of(context).pop();
                   },
                   child: Text('Add Note'),
 

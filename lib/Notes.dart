@@ -1,21 +1,22 @@
-class Notes {
+import 'package:flutter/cupertino.dart';
+import 'db_Helper.dart';
+
+class NotesModel {
   int? id;
   String? name;
   String? details;
 
-  Notes({
-    this.id,
+  NotesModel({
     required this.name,
-    required this.details
+    this.details
   });
+    NotesModel.fromMap(Map map) {
+      id = map['id'];
+      name = map['name'];
+      details = map['details'];
+    }
+  Map<String, dynamic> toMap() {
 
-  Notes.fromMap(Map map) {
-    id = map['id'];
-    name = map['name'];
-    details = map['details'];
-
-  }
-  toMap() {
-    return {"name": name,"details":details};
-  }
+      return {"name": name, "details": details};
+    }
 }

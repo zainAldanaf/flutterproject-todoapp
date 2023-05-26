@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterproject/db_provider.dart';
 import 'package:flutterproject/HomePage.dart';
-import 'package:flutterproject/Views/setting.dart';
+import 'package:flutterproject/setting.dart';
+import 'package:provider/provider.dart';
 
-import 'Views/Profile.dart';
-import 'Views/SplashNote.dart';
+import '/Profile.dart';
+import 'Notes.dart';
+import 'SplashNote.dart';
+import 'db_Helper.dart';
 
 
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark
-  ));
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashNote()));
+void main()  async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DbHelper.dbHelper.initDatabase();
+
+  runApp(ChangeNotifierProvider<DbProvider>(
+    create: (context){
+      return DbProvider();
+    },
+  child: MaterialApp( debugShowCheckedModeBanner: false,
+  home: SplashNote())));
+
 }
 
 class home extends StatefulWidget {
