@@ -8,7 +8,7 @@ class DbController extends ChangeNotifier {
   DbController() {
     getAllNotes();
   }
-  List<Notes> students = [];
+  List<Notes> notes = [];
   bool isLoading = false;
   flipIsLoading() {
     isLoading = !isLoading;
@@ -17,14 +17,14 @@ class DbController extends ChangeNotifier {
 
   getAllNotes() async {
     flipIsLoading();
-    students = await DbHelper.dbHelper.getAllNotes();
+    notes = await DbHelper.dbHelper.getAllNotes();
     flipIsLoading();
   }
 
   TextEditingController nameController = TextEditingController();
   TextEditingController detailsController = TextEditingController();
   bool isMale = true;
-  insertNewStudent() async {
+  insertNewNote() async {
     Notes notes = Notes(
         name: nameController.text,
         details: detailsController.text);
@@ -32,13 +32,9 @@ class DbController extends ChangeNotifier {
     getAllNotes();
   }
 
-  // updateStudent(int id) async {
-
-  // }
-
   deleteName(int id) async {
     await DbHelper.dbHelper.deleteNote(id);
-    students.removeWhere((element) => element.id == id);
+    notes.removeWhere((element) => element.id == id);
     notifyListeners();
   }
 }
