@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterproject/HomePage.dart';
-import 'package:flutterproject/Profile.dart';
-import 'package:flutterproject/setting.dart';
+import 'package:flutterproject/Views/setting.dart';
 
-import 'SplashNote.dart';
+import 'Views/Profile.dart';
+import 'Views/SplashNote.dart';
+
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

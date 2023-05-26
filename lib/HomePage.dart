@@ -1,9 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterproject/NoteDetailsPage.dart';
-
 import 'AddNotePage.dart';
+import 'Views/NoteDetailsPage.dart';
 
 class HomeNote extends StatefulWidget {
   const HomeNote({Key? key}) : super(key: key);

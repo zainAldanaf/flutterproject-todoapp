@@ -20,7 +20,7 @@ class _ProfilePage extends State<ProfilePage> {
         children: [
           const SizedBox(height: 40,),
           CircleAvatar(
-            radius: 70,
+            radius: 50,
             backgroundImage: AssetImage('asset/Images/person.png'),
           ),
           const SizedBox(height: 30,),

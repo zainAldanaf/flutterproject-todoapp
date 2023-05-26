@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterproject/main.dart';
 
-import 'HomePage.dart';
+import '../HomePage.dart';
 
 class SplashNote extends StatefulWidget {
   const SplashNote({Key? key}) : super(key: key);
